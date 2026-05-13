@@ -82,7 +82,7 @@ a {
   margin: 0 auto;
   padding: 72px 24px 84px;
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 46px;
   align-items: center;
 }
