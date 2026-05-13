@@ -47,18 +47,14 @@ a {
 }
 
 .brand-logo {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  font-weight: 950;
-  letter-spacing: -0.08em;
-  background:
-    linear-gradient(135deg, rgba(116,224,255,0.24), rgba(255,189,87,0.20)),
-    rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.34);
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .brand-name {
