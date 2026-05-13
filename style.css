@@ -312,3 +312,9 @@ h1 {
 
   .hero-card { order: -1; }
 }
+.collection-subtitle {
+  color: var(--muted);
+  font-size: 18px;
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
