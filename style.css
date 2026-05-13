@@ -47,9 +47,9 @@ a {
 }
 
 .brand-logo {
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
+  width: 82px;
+  height: 82px;
+  border-radius: 18px;
   object-fit: contain;
   display: block;
   background: transparent;
