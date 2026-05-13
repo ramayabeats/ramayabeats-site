@@ -12,7 +12,7 @@ async function loadWallpapers() {
         </div>
         <h3>${item.title}</h3>
         <p>${item.format || "Phone 9:16"}</p>
-        <a class="download" href="${item.file}" download>Download wallpaper</a>
+        <a class="download" href="${item.file}" target="_blank">Download wallpaper</a>
       </article>
     `).join("");
   } catch (error) {
