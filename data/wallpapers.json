@@ -1,18 +1,22 @@
 [
   {
     "title": "Rise Beast",
-    "image": "../assets/wallpapers/rise-01.jpeg"
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/rise-01.jpeg"
   },
   {
     "title": "Sweet Drop",
-    "image": "../assets/wallpapers/rise-02.jpeg"
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/rise-02.jpeg"
   },
   {
     "title": "We Run The Zoo",
-    "image": "../assets/wallpapers/rise-03.jpeg"
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/rise-03.jpeg"
   },
   {
     "title": "Tacos Before Problemas",
-    "image": "../assets/wallpapers/rise-04.jpeg"
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/rise-04.jpeg"
   }
 ]
