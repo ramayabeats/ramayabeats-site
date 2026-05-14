@@ -55,12 +55,16 @@ a {
 
 .brand-name {
   font-weight: 950;
-  letter-spacing: 0.045em;
+  letter-spacing: 0.05em;
+  font-size: 30px;
+  line-height: 1;
+}
 }
 
 .brand-subtitle {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
+  margin-top: 6px;
 }
 
 .nav {
