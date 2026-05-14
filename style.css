@@ -342,12 +342,19 @@ h1 {
   background: rgba(255,255,255,0.09);
 }
 .coming-card span {
+
   display: block;
+
   margin-top: 12px;
+
   font-size: 15px;
+
   font-weight: 600;
+
   color: var(--muted);
+
   line-height: 1.5;
+
 }
 .locked-card {
   opacity: 0.38;
