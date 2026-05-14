@@ -318,3 +318,26 @@ h1 {
   margin-top: 10px;
   letter-spacing: 0.02em;
 }
+.coming-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.coming-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 26px;
+  padding: 42px 24px;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  transition: 180ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.coming-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.09);
+}
