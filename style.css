@@ -47,13 +47,10 @@ a {
 }
 
 .brand-logo {
-  width: 120px;
+  width: 170px;
   height: auto;
   object-fit: contain;
   display: block;
-  background: transparent;
-  border: none;
-  box-shadow: none;
 }
 
 .brand-name {
