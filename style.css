@@ -350,7 +350,7 @@ h1 {
   line-height: 1.5;
 }
 .locked-card {
-  opacity: 0.45;
-  filter: blur(1.5px);
+  opacity: 0.38;
+  filter: grayscale(1);
   pointer-events: none;
 }
