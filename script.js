@@ -2,7 +2,7 @@ async function loadWallpapers() {
   const grid = document.getElementById("wallpaper-grid");
 
   try {
-    const response = await fetch("wallpapers.json");
+    const response = await fetch("data/wallpapers.json");
     const wallpapers = await response.json();
 
     grid.innerHTML = wallpapers.map((item) => `
