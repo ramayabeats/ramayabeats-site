@@ -1,17 +1,18 @@
 [
   {
-    "title": "Ramaya Fjord Stage",
-    "format": "Phone 9:16",
-    "file": "assets/wallpapers/ramaya-phone-01.jpg"
+    "title": "Zoo Run",
+    "image": "assets/wallpapers/rise-01.jpeg"
   },
   {
-    "title": "Ramaya Beats Glow",
-    "format": "Phone 9:16",
-    "file": "assets/wallpapers/ramaya-phone-02.jpg"
+    "title": "Tacos Before Problemas",
+    "image": "assets/wallpapers/rise-02.jpeg"
   },
   {
-    "title": "Northern Crowd Energy",
-    "format": "Phone 9:16",
-    "file": "assets/wallpapers/ramaya-phone-03.jpg"
+    "title": "Rise Beast",
+    "image": "assets/wallpapers/rise-03.jpeg"
+  },
+  {
+    "title": "Sweet Drop",
+    "image": "assets/wallpapers/rise-04.jpeg"
   }
 ]
