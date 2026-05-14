@@ -349,3 +349,8 @@ h1 {
   color: var(--muted);
   line-height: 1.5;
 }
+.locked-card {
+  opacity: 0.45;
+  filter: blur(1.5px);
+  pointer-events: none;
+}
