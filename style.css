@@ -320,11 +320,9 @@ h1 {
 }
 .coming-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  margin-top: 34px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
-
 .coming-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.12);
