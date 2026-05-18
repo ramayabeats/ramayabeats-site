@@ -1,1 +1,22 @@
-
+[
+  {
+    "title": "Crazy Signal",
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/crazy-01.jpeg"
+  },
+  {
+    "title": "Brainrot Creature",
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/crazy-02.jpeg"
+  },
+  {
+    "title": "Chaos Drop",
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/crazy-03.jpeg"
+  },
+  {
+    "title": "Neon Madness",
+    "format": "Phone 9:16",
+    "file": "assets/wallpapers/crazy-04.jpeg"
+  }
+]
