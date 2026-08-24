@@ -2438,6 +2438,11 @@ h1 {
   letter-spacing: 0.03em;
 }
 
+.incubator-assets-aside dl div:last-child dd {
+  font-size: clamp(18px, 1.5vw, 22px);
+  white-space: nowrap;
+}
+
 .incubator-assets-aside small {
   color: rgba(216,242,255,0.5);
   font-size: 7px;

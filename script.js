@@ -18,8 +18,8 @@ async function loadWallpapers() {
             <img src="${item.preview || item.file}" alt="${item.title}" loading="lazy" decoding="async">
           </div>
           <h3>${item.title}</h3>
-          <p>Phone 9:16 • Full Resolution</p>
-          <a class="download" href="${item.file}" download="${filename}" aria-label="Download ${item.title} wallpaper in full resolution">Download full-resolution wallpaper</a>
+          <p>9:16 Phone • Full Resolution</p>
+          <a class="download" href="${item.file}" download="${filename}" aria-label="Download ${item.title} wallpaper in full resolution">Download Wallpaper</a>
         </article>
       `;
     }).join("");

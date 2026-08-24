@@ -67,7 +67,7 @@ data/wallpapers.json
 }
 ```
 
-Wallpaper cards use the neutral label `Phone 9:16 • Full Resolution`. Do not add exact pixel dimensions manually. If exact dimensions are introduced later, derive them from the source file automatically.
+Wallpaper cards use the neutral label `9:16 Phone • Full Resolution`. Do not add exact pixel dimensions manually. If exact dimensions are introduced later, derive them from the source file automatically.
 
 4. Commit changes.
 
