@@ -1683,7 +1683,7 @@ h1 {
 }
 
 .incubator-statusbar {
-  min-height: 88px;
+  min-height: 108px;
   margin: 0;
   padding: 12px 22px;
   border-right: 1px solid rgba(57,221,255,0.28);
@@ -1701,15 +1701,20 @@ h1 {
   border-right: 1px solid rgba(57,221,255,0.2);
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
 }
 
 .incubator-statusbar > div:last-child { border-right: 0; }
 
 .incubator-statusbar__icon {
+  width: 50px;
+  min-width: 50px;
+  display: grid;
+  place-items: center;
   color: var(--incubator-cyan);
-  font-size: 32px;
+  font-size: 44px;
   font-weight: 400;
+  line-height: 1;
   text-shadow: 0 0 16px rgba(57,221,255,0.5);
 }
 
@@ -1726,14 +1731,14 @@ h1 {
 
 .incubator-statusbar small {
   color: rgba(220,244,255,0.66);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 850;
   letter-spacing: 0.12em;
 }
 
 .incubator-statusbar strong {
   color: #7dff9a;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.05em;
 }
 
@@ -1758,7 +1763,7 @@ h1 {
 
 .incubator-statusbar__compact-asset {
   width: 100% !important;
-  height: 60px !important;
+  height: 80px !important;
   border-radius: 0 !important;
   object-fit: contain !important;
 }
@@ -2741,12 +2746,12 @@ h1 {
   .hero-chamber { width: min(100%, 340px); height: auto; }
 
   .incubator-statusbar { padding: 8px; }
-  .incubator-statusbar > div { min-height: 67px; padding: 7px 11px; gap: 10px; }
-  .incubator-statusbar__icon { font-size: 23px; }
-  .incubator-statusbar small { font-size: 7px; }
-  .incubator-statusbar strong { font-size: 10px; }
+  .incubator-statusbar > div { min-height: 76px; padding: 8px 11px; gap: 10px; }
+  .incubator-statusbar__icon { width: 34px; min-width: 34px; font-size: 30px; }
+  .incubator-statusbar small { font-size: 8px; }
+  .incubator-statusbar strong { font-size: 12px; }
   .incubator-statusbar__brand img { width: 34px; height: 34px; }
-  .incubator-statusbar__compact-asset { height: 42px !important; }
+  .incubator-statusbar__compact-asset { height: 54px !important; }
   .incubator-statusbar__brand strong { font-size: 11px; }
 
   .subject-release { padding: 35px 20px 28px; gap: 40px; }
