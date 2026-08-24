@@ -4,7 +4,7 @@ async function loadWallpapers() {
   if (!grid) return;
 
   try {
-    const response = await fetch(`data/${window.wallpaperCollection || "wallpapers"}.json`);
+    const response = await fetch(`data/${window.wallpaperCollection || "wallpapers"}.json?v=20260825-2`);
     if (!response.ok) throw new Error(`Wallpaper data returned ${response.status}`);
 
     const wallpapers = await response.json();
@@ -18,7 +18,7 @@ async function loadWallpapers() {
             <img src="${item.preview || item.file}" alt="${item.title}" loading="lazy" decoding="async">
           </div>
           <h3>${item.title}</h3>
-          <p>${item.format || "Phone 9:16"}</p>
+          <p>${item.resolution ? `${item.resolution} • ${item.format || "JPG"}` : item.format || "Phone wallpaper"}</p>
           <a class="download" href="${item.file}" download="${filename}" aria-label="Download ${item.title} wallpaper in full resolution">Download full-resolution wallpaper</a>
         </article>
       `;
@@ -36,17 +36,6 @@ function initGlobalHeader() {
   const toggle = header.querySelector(".rds-menu-toggle");
   const panel = header.querySelector(".rds-header__panel");
   if (!toggle || !panel) return;
-
-  const syncHomeNavigation = () => {
-    const isHome = window.location.pathname.endsWith("/") || window.location.pathname.endsWith("/index.html");
-    if (!isHome) return;
-
-    const links = panel.querySelectorAll(".rds-nav a");
-    links.forEach((link) => link.removeAttribute("aria-current"));
-
-    const activeHref = window.location.hash === "#collections" ? "index.html#collections" : "index.html#home";
-    panel.querySelector(`.rds-nav a[href="${activeHref}"]`)?.setAttribute("aria-current", "page");
-  };
 
   const setOpen = (open) => {
     toggle.setAttribute("aria-expanded", String(open));
@@ -71,8 +60,6 @@ function initGlobalHeader() {
     if (window.innerWidth > 920) setOpen(false);
   });
 
-  window.addEventListener("hashchange", syncHomeNavigation);
-  syncHomeNavigation();
 }
 
 initGlobalHeader();

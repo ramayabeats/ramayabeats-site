@@ -63,10 +63,13 @@ data/wallpapers.json
 ```json
 {
   "title": "Your Wallpaper Name",
-  "format": "Phone 9:16",
+  "resolution": "3764 × 6688",
+  "format": "JPG",
   "file": "assets/wallpapers/your-file-name.jpg"
 }
 ```
+
+Always enter the image's real pixel dimensions. Do not reuse a generic phone ratio when the source file has a different resolution.
 
 4. Commit changes.
 

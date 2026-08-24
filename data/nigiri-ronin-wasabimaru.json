@@ -1,25 +1,29 @@
 [
   {
     "title": "Moonlit Temple",
-    "format": "4032 × 7168 • JPG",
+    "resolution": "4032 × 7168",
+    "format": "JPG",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-01.webp",
     "file": "assets/wallpapers/nigiri-ronin-01.jpeg"
   },
   {
     "title": "Honor Served Cold",
-    "format": "4032 × 7168 • JPG",
+    "resolution": "4032 × 7168",
+    "format": "JPG",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-02.webp",
     "file": "assets/wallpapers/nigiri-ronin-02.jpeg"
   },
   {
     "title": "Tokyo Taxi",
-    "format": "4032 × 7168 • JPG",
+    "resolution": "4032 × 7168",
+    "format": "JPG",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-03.webp",
     "file": "assets/wallpapers/nigiri-ronin-03.jpeg"
   },
   {
     "title": "Metro Strike",
-    "format": "4032 × 7168 • JPG",
+    "resolution": "4032 × 7168",
+    "format": "JPG",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-04.webp",
     "file": "assets/wallpapers/nigiri-ronin-04.jpeg"
   }
