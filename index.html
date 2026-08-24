@@ -11,27 +11,43 @@
   <meta property="og:title" content="Ramaya Beats Studio — Free Phone Wallpapers" />
   <meta property="og:description" content="Download free cinematic phone wallpapers from the Ramaya universe." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/hero-banner.jpg" />
+  <meta property="og:image" content="assets/hero-banner.png" />
 
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/ramaya-emblem-transparent.png" type="image/png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
-  <header class="site-header">
-    <a class="brand" href="/">
-      <img src="assets/favicon + prawdziwe logo strony.png" class="brand-logo" alt="Ramaya Beats Studio Logo">
-      <div>
-        <div class="brand-name">RAMAYA BEATS STUDIO</div>
-        <div class="brand-subtitle">Free cinematic phone wallpapers</div>
-      </div>
-    </a>
+<body id="home" class="page-home">
+  <header class="rds-header" data-global-header>
+    <div class="rds-header__inner">
+      <a class="rds-brand" href="index.html#home" aria-label="Ramaya Beats Studio — Home">
+        <img class="rds-brand__mark" src="assets/ramaya-logo-header-transparent.png" alt="" width="51" height="64" />
+        <span class="rds-brand__copy">
+          <span class="rds-brand__name">RAMAYA BEATS STUDIO</span>
+          <span class="rds-brand__meta">OFFICIAL UNIVERSE ARCHIVE</span>
+        </span>
+      </a>
 
-    <nav class="nav">
-  <a href="#wallpapers">Wallpapers</a>
-  <a href="https://www.youtube.com/@RamayaBeatsStudio" target="_blank" rel="noopener">YouTube</a>
-  <a href="https://www.tiktok.com/@ramayabeatsstudio" target="_blank" rel="noopener">TikTok</a>
-</nav>
+      <button class="rds-menu-toggle" type="button" aria-expanded="false" aria-controls="global-navigation">
+        <span class="sr-only">Open navigation</span>
+        <span class="rds-menu-toggle__line" aria-hidden="true"></span>
+        <span class="rds-menu-toggle__line" aria-hidden="true"></span>
+      </button>
+
+      <div class="rds-header__panel" id="global-navigation">
+        <nav class="rds-nav" aria-label="Global navigation">
+          <a href="index.html#home" aria-current="page">HOME</a>
+          <a href="brainrot-incubator.html">INCUBATOR</a>
+          <a href="index.html#collections">COLLECTIONS</a>
+          <a href="https://www.youtube.com/@RamayaBeatsStudio" target="_blank" rel="noopener">YOUTUBE <span aria-hidden="true">↗</span></a>
+        </nav>
+
+        <div class="rds-system-status" aria-label="System online">
+          <span class="rds-system-status__dot" aria-hidden="true"></span>
+          <span>SYSTEM ONLINE</span>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -72,7 +88,7 @@
       </div>
     </section>
 
-    <section class="section coming-soon">
+    <section id="collections" class="section coming-soon">
       <p class="eyebrow">MORE COLLECTIONS</p>
       <h2>MORE FROM THE RAMAYA UNIVERSE</h2>
 
@@ -85,10 +101,14 @@
   🌴 Brainrot Beach Club Party 🍹
   <span>AVAILABLE NOW</span>
 </a>
-        <div class="coming-card locked-card">
+        <a href="brainrot-incubator.html" class="coming-card incubator-card">
           BRAINROT INCUBATOR 🧪<br>
-          <span>Episode 1: Nigiri Ronin Wasabimaru 🍣⚔️</span>
-        </div>
+          <span>Subject 001 available now: Nigiri Ronin Wasabimaru 🍣⚔️</span>
+        </a>
+        <article class="coming-card locked-card" aria-disabled="true" aria-label="African Brainrot phone wallpapers coming soon">
+          🌍🌴 AFRICAN BRAINROT 🦛🚔
+          <span>COMING SOON</span>
+        </article>
       </div>
     </section>
   </main>
