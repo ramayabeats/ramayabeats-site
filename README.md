@@ -30,6 +30,8 @@ The reusable archive chamber and dossier use the same `data-subject-number` and 
 
 The current chamber is configured for `SUBJECT-001 — Nigiri Ronin Wasabimaru` and uses `assets/brainrot-incubator/subject-001-chamber.jpg` as the featured subject render.
 
+Subject media uses the reusable `.subject-media-card` component with `data-subject-media`, `data-subject-number` and `data-youtube-url` hooks. Future Subject releases should keep this structure and replace only the subject number, video URL, thumbnail, title and subtitle. Subject 001 uses the locally archived official YouTube thumbnail at `assets/brainrot-incubator/subject-001-origin-video.jpg`.
+
 ## Subject 001 origin stills
 
 The Incident Report uses canonical film stills stored at these paths:
