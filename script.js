@@ -4,7 +4,7 @@ async function loadWallpapers() {
   if (!grid) return;
 
   try {
-    const response = await fetch(`data/${window.wallpaperCollection || "wallpapers"}.json?v=20260825-2`);
+    const response = await fetch(`data/${window.wallpaperCollection || "wallpapers"}.json?v=20260825-3`);
     if (!response.ok) throw new Error(`Wallpaper data returned ${response.status}`);
 
     const wallpapers = await response.json();
@@ -18,7 +18,7 @@ async function loadWallpapers() {
             <img src="${item.preview || item.file}" alt="${item.title}" loading="lazy" decoding="async">
           </div>
           <h3>${item.title}</h3>
-          <p>${item.resolution ? `${item.resolution} • ${item.format || "JPG"}` : item.format || "Phone wallpaper"}</p>
+          <p>Phone 9:16 • Full Resolution</p>
           <a class="download" href="${item.file}" download="${filename}" aria-label="Download ${item.title} wallpaper in full resolution">Download full-resolution wallpaper</a>
         </article>
       `;
