@@ -24,6 +24,6 @@ Give every Ramaya page one stable brand and navigation layer while allowing indi
 
 ## Branding asset
 
-The header uses the approved transparent `assets/ramaya-logo-header-transparent.png` artwork alongside the typographic Ramaya Beats Studio lockup. This keeps the brand legible without visually dominating the global navigation. A transparent compact derivative at `assets/ramaya-emblem-transparent.png` is used as the browser favicon and small universe mark.
+The header uses the approved transparent `assets/ramaya-logo-header-transparent.png` artwork alongside the typographic Ramaya Beats Studio lockup. This keeps the brand legible without visually dominating the global navigation. The browser favicon uses the round full-brand derivative at `assets/ramaya-favicon-full-logo.png`, while `assets/ramaya-emblem-transparent.png` remains the compact universe mark inside the site UI.
 
 The rejected horizontal artwork, temporary `assets/favicon.svg` and legacy `assets/favicon + prawdziwe logo strony.png` are not rendered by the header.
