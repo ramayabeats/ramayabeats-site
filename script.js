@@ -265,7 +265,19 @@ function initSoundtracks() {
   });
 }
 
+function initIncubatorMotionVisibility() {
+  const hero = document.querySelector(".incubator-cinematic-hero");
+  if (!hero || !("IntersectionObserver" in window)) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    hero.classList.toggle("is-motion-paused", !entry.isIntersecting);
+  }, { rootMargin: "120px 0px" });
+
+  observer.observe(hero);
+}
+
 initGlobalHeader();
 void loadWallpapers();
 initSoundtracks();
+initIncubatorMotionVisibility();
 void initPageVisitCounter();
