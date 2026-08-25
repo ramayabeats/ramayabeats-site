@@ -1290,10 +1290,10 @@ h1 {
 .incubator-brand-activity {
   position: absolute;
   z-index: 1;
-  top: 19%;
+  top: 18%;
   left: 6%;
   width: 22%;
-  height: 57%;
+  height: 45%;
   overflow: hidden;
   border-radius: 44% 44% 35% 35% / 12% 12% 24% 24%;
   opacity: 0;
@@ -1777,7 +1777,7 @@ h1 {
   height: 2px;
   background: white;
   box-shadow: 0 0 14px 4px rgba(170,255,0,0.85);
-  animation: chamber-scan 5.4s ease-in-out infinite alternate;
+  animation: chamber-scan 9.8s ease-in-out infinite alternate;
 }
 
 .incubator-statusbar {
@@ -2812,10 +2812,10 @@ h1 {
 }
 
 @keyframes incubator-brand-bubble {
-  0% { bottom: -10%; opacity: 0; transform: translateX(0) scale(0.72); }
-  14% { opacity: 0.72; }
-  58% { transform: translateX(calc(var(--brand-bubble-drift) * -0.45)) scale(0.95); }
-  78% { opacity: 0.62; }
+  0% { bottom: -2%; opacity: 0; transform: translateX(0) scale(0.72); }
+  12% { bottom: 3%; opacity: 0.72; }
+  58% { bottom: 58%; transform: translateX(calc(var(--brand-bubble-drift) * -0.45)) scale(0.95); }
+  78% { bottom: 82%; opacity: 0.62; }
   100% { bottom: 108%; opacity: 0; transform: translateX(var(--brand-bubble-drift)) scale(1.14); }
 }
 
