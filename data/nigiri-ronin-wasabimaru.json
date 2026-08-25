@@ -1,20 +1,24 @@
 [
   {
+    "id": "subject-001-moonlit-temple",
     "title": "Moonlit Temple",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-01.webp",
     "file": "assets/wallpapers/nigiri-ronin-01.jpeg"
   },
   {
+    "id": "subject-001-honor-served-cold",
     "title": "Honor Served Cold",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-02.webp",
     "file": "assets/wallpapers/nigiri-ronin-02.jpeg"
   },
   {
+    "id": "subject-001-tokyo-taxi",
     "title": "Tokyo Taxi",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-03.webp",
     "file": "assets/wallpapers/nigiri-ronin-03.jpeg"
   },
   {
+    "id": "subject-001-metro-strike",
     "title": "Metro Strike",
     "preview": "assets/previews/nigiri-ronin/nigiri-ronin-04.webp",
     "file": "assets/wallpapers/nigiri-ronin-04.jpeg"

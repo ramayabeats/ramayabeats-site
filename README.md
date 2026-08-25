@@ -9,6 +9,8 @@ Official static website for Ramaya Beats Studio.
 - `crazy-brainrot.html` — Crazy Brainrot collection
 - `beach-brainrot-party.html` — Brainrot Beach Club Party collection
 - `data/*.json` — wallpaper lists loaded by `script.js`, including the four-file Nigiri Ronin release
+- `functions/api/wallpaper-downloads.js` — Cloudflare Pages Function for real per-wallpaper download counts
+- `migrations/0001_create_wallpaper_downloads.sql` — D1 schema for persistent counts
 
 The shared navigation follows **RDS-001 Global Header v1.0**. Its design notes are in `design-system/RDS-001-global-header.md`.
 
@@ -31,6 +33,14 @@ The reusable archive chamber and dossier use the same `data-subject-number` and 
 The current chamber is configured for `SUBJECT-001 — Nigiri Ronin Wasabimaru` and uses `assets/brainrot-incubator/subject-001-chamber.jpg` as the featured subject render.
 
 Subject media uses the reusable `.subject-media-card` component with `data-subject-media`, `data-subject-number` and `data-youtube-url` hooks. Future Subject releases should keep this structure and replace only the subject number, video URL, thumbnail, title and subtitle. Subject 001 uses the locally archived official YouTube thumbnail at `assets/brainrot-incubator/subject-001-origin-video.jpg`.
+
+The reusable soundtrack control uses `data-soundtrack`, `data-soundtrack-src` and `data-soundtrack-volume`. Subject 001 expects:
+
+```text
+assets/audio/subject-001-soundtrack.mp3
+```
+
+Playback never autostarts. The control becomes available only after that asset responds successfully, and starts at 25% volume.
 
 ## Subject 001 origin stills
 
@@ -64,13 +74,29 @@ data/wallpapers.json
 
 ```json
 {
+  "id": "collection-your-wallpaper-name",
   "title": "Your Wallpaper Name",
   "file": "assets/wallpapers/your-file-name.jpg"
 }
 ```
+
+The `id` is permanent and is used by the download counter. Keep it lowercase, use letters/numbers/hyphens only, and do not change it when renaming or replacing the image file.
 
 Wallpaper cards use the neutral label `9:16 Phone • Full Resolution`. Do not add exact pixel dimensions manually. If exact dimensions are introduced later, derive them from the source file automatically.
 
 4. Commit changes.
 
 Cloudflare Pages will automatically update the website.
+
+## Download counter setup on Cloudflare
+
+The counter starts at zero when deployed and increments only when a visitor clicks a wallpaper download link. Image previews do not call the counting endpoint. If the endpoint or database is unavailable, the original file download still works and the count remains hidden.
+
+One-time Cloudflare setup:
+
+1. In Cloudflare, create a D1 database (for example `ramayabeats-downloads`).
+2. Open its SQL console and run `migrations/0001_create_wallpaper_downloads.sql`.
+3. Open the Pages project settings and add a D1 binding named exactly `DOWNLOADS_DB`, selecting that database. Add it to Production and Preview if both environments should count downloads.
+4. Redeploy the Pages project so the Function and binding are active.
+
+No database ID or credentials are stored in this repository.

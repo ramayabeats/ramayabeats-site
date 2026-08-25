@@ -1,17 +1,21 @@
 [
   {
+    "id": "beach-party-frigo-camelo-space-party",
     "title": "Frigo Camelo Space Party",
     "file": "assets/wallpapers/beach-01.jpeg"
   },
   {
+    "id": "beach-party-penguin-habitat-sunset",
     "title": "Penguin Habitat Sunset",
     "file": "assets/wallpapers/beach-02.jpeg"
   },
   {
+    "id": "beach-party-frigo-moon-party",
     "title": "Frigo Moon Party",
     "file": "assets/wallpapers/beach-03.jpeg"
   },
   {
+    "id": "beach-party-bananita-dolphinita",
     "title": "Bananita Dolphinita",
     "file": "assets/wallpapers/beach-04.jpeg"
   }

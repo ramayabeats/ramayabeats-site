@@ -1363,6 +1363,45 @@ h1 {
   letter-spacing: 0.16em;
 }
 
+.incubator-soundtrack {
+  margin-top: 18px;
+  padding-left: 16px;
+}
+
+.incubator-soundtrack[hidden] {
+  display: none;
+}
+
+.incubator-soundtrack__control {
+  min-height: 38px;
+  padding: 9px 13px;
+  border: 1px solid rgba(57,221,255,0.34);
+  border-radius: 8px;
+  color: rgba(218,247,255,0.86);
+  background: rgba(2,17,36,0.76);
+  box-shadow: inset 0 0 18px rgba(57,221,255,0.035);
+  font: inherit;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.incubator-soundtrack__control:hover,
+.incubator-soundtrack__control:focus-visible,
+.incubator-soundtrack__control[aria-pressed="true"] {
+  border-color: var(--incubator-cyan);
+  color: var(--incubator-cyan);
+  background: rgba(57,221,255,0.09);
+  outline: none;
+}
+
+.incubator-soundtrack__control:disabled {
+  opacity: 0.72;
+  cursor: progress;
+}
+
 .hero-chamber {
   position: relative;
   width: min(100%, 360px);
@@ -2596,6 +2635,23 @@ h1 {
   font-size: 10px;
 }
 
+.wallpaper-card .wallpaper-download-count {
+  min-height: 1.35em;
+  margin-top: -4px;
+  color: rgba(255,255,255,0.56);
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.wallpaper-card .wallpaper-download-count[hidden] {
+  display: none;
+}
+
+.page-incubator .wallpaper-card .wallpaper-download-count {
+  color: rgba(155,231,255,0.65);
+  font-size: 9px;
+}
+
 .page-incubator .download {
   margin: 0 4px;
   padding: 9px 7px;
@@ -2817,6 +2873,8 @@ h1 {
 
   .incubator-cinematic-hero.has-official-brand .incubator-brand-hero > img {
     width: min(100%, 690px);
+    height: auto;
+    max-height: none;
     margin: 0 auto;
   }
 
@@ -2933,10 +2991,10 @@ h1 {
 
   .incubator-cinematic-hero {
     min-height: 0;
-    padding: 28px 18px 25px;
+    padding: 18px 14px 16px;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: 30px;
+    gap: 20px;
   }
 
   .incubator-cinematic-hero.has-official-brand {
@@ -2969,6 +3027,18 @@ h1 {
   .incubator-hero-copy__mission { font-size: 10px; line-height: 1.55; letter-spacing: 0.09em; }
   .incubator-cinematic-hero.has-official-brand .incubator-hero-copy__path { margin-bottom: 8px; }
   .incubator-cinematic-hero.has-official-brand .incubator-hero-copy__mission { margin-top: 4px; padding-left: 0; text-align: center; }
+
+  .incubator-soundtrack {
+    margin-top: 10px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .incubator-soundtrack__control {
+    min-height: 42px;
+    padding-right: 14px;
+    padding-left: 14px;
+  }
 
   .hero-chamber { width: min(100%, 340px); height: auto; }
 

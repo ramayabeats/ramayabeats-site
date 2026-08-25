@@ -1,17 +1,21 @@
 [
   {
+    "id": "rise-beast",
     "title": "Rise Beast",
     "file": "assets/wallpapers/rise-01.jpeg"
   },
   {
+    "id": "rise-sweet-drop",
     "title": "Sweet Drop",
     "file": "assets/wallpapers/rise-02.jpeg"
   },
   {
+    "id": "rise-we-run-the-zoo",
     "title": "We Run The Zoo",
     "file": "assets/wallpapers/rise-03.jpeg"
   },
   {
+    "id": "rise-tacos-before-problemas",
     "title": "Tacos Before Problemas",
     "file": "assets/wallpapers/rise-04.jpeg"
   }

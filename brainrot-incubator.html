@@ -17,7 +17,7 @@
   <link rel="icon" href="/favicon.png" sizes="96x96" type="image/png" />
   <link rel="shortcut icon" href="/favicon.png" type="image/png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
-  <link rel="stylesheet" href="style.css?v=20260825-5" />
+  <link rel="stylesheet" href="style.css?v=20260825-6" />
 </head>
 
 <body class="page-incubator">
@@ -77,6 +77,18 @@
         </div>
         <p class="incubator-hero-copy__slogan">WHERE LEGENDS ARE BORN</p>
         <p class="incubator-hero-copy__mission">DISCOVER / CLASSIFY / DOCUMENT / ARCHIVE</p>
+        <div
+          class="incubator-soundtrack"
+          data-soundtrack
+          data-soundtrack-src="assets/audio/subject-001-soundtrack.mp3"
+          data-soundtrack-volume="0.25"
+          hidden
+        >
+          <button class="incubator-soundtrack__control" type="button" aria-pressed="false">
+            <span data-soundtrack-label>🎵 ACTIVATE SOUNDTRACK</span>
+          </button>
+          <span class="sr-only" data-soundtrack-status aria-live="polite"></span>
+        </div>
       </div>
 
       <article
@@ -334,6 +346,6 @@
     <p>Stylized fictional visuals created for artistic purposes.</p>
   </footer>
 
-  <script src="script.js?v=20260825-4"></script>
+  <script src="script.js?v=20260825-6"></script>
 </body>
 </html>

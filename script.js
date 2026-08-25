@@ -1,28 +1,112 @@
+const DOWNLOAD_COUNTER_ENDPOINT = "/api/wallpaper-downloads";
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function formatDownloadCount(count) {
+  return `${new Intl.NumberFormat("en").format(count)} ${count === 1 ? "download" : "downloads"}`;
+}
+
+function showDownloadCount(wallpaperId, count) {
+  if (!Number.isInteger(count) || count < 1) return;
+
+  const counter = document.querySelector(`[data-download-count="${CSS.escape(wallpaperId)}"]`);
+  if (!counter) return;
+
+  counter.textContent = formatDownloadCount(count);
+  counter.hidden = false;
+}
+
+async function loadDownloadCounts(wallpaperIds) {
+  if (!wallpaperIds.length) return;
+
+  try {
+    const params = new URLSearchParams({ ids: wallpaperIds.join(",") });
+    const response = await fetch(`${DOWNLOAD_COUNTER_ENDPOINT}?${params}`, {
+      headers: { Accept: "application/json" },
+      credentials: "same-origin"
+    });
+
+    if (!response.ok) return;
+
+    const { counts = {} } = await response.json();
+    Object.entries(counts).forEach(([wallpaperId, count]) => {
+      showDownloadCount(wallpaperId, count);
+    });
+  } catch {
+    // The wallpaper download remains available if the optional counter API is offline.
+  }
+}
+
+async function recordWallpaperDownload(wallpaperId) {
+  try {
+    const response = await fetch(DOWNLOAD_COUNTER_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ wallpaperId }),
+      credentials: "same-origin",
+      keepalive: true
+    });
+
+    if (!response.ok) return;
+
+    const { count } = await response.json();
+    showDownloadCount(wallpaperId, count);
+  } catch {
+    // Never interrupt the actual file download because analytics are unavailable.
+  }
+}
+
 async function loadWallpapers() {
   const grid = document.getElementById("wallpaper-grid");
 
   if (!grid) return;
 
   try {
-    const response = await fetch(`data/${window.wallpaperCollection || "wallpapers"}.json?v=20260825-3`);
+    const response = await fetch(`data/${window.wallpaperCollection || "wallpapers"}.json?v=20260825-6`);
     if (!response.ok) throw new Error(`Wallpaper data returned ${response.status}`);
 
     const wallpapers = await response.json();
 
     grid.innerHTML = wallpapers.map((item) => {
       const filename = item.filename || item.file.split("/").pop();
+      const wallpaperId = item.id;
+
+      if (!wallpaperId) {
+        throw new Error(`Wallpaper "${item.title}" is missing a stable id`);
+      }
 
       return `
-        <article class="wallpaper-card">
+        <article class="wallpaper-card" data-wallpaper-id="${escapeHtml(wallpaperId)}">
           <div class="wallpaper-preview">
-            <img src="${item.preview || item.file}" alt="${item.title}" loading="lazy" decoding="async">
+            <img src="${escapeHtml(item.preview || item.file)}" alt="${escapeHtml(item.title)}" loading="lazy" decoding="async">
           </div>
-          <h3>${item.title}</h3>
+          <h3>${escapeHtml(item.title)}</h3>
           <p>9:16 Phone • Full Resolution</p>
-          <a class="download" href="${item.file}" download="${filename}" aria-label="Download ${item.title} wallpaper in full resolution">Download Wallpaper</a>
+          <p class="wallpaper-download-count" data-download-count="${escapeHtml(wallpaperId)}" hidden></p>
+          <a class="download" href="${escapeHtml(item.file)}" download="${escapeHtml(filename)}" data-download-wallpaper="${escapeHtml(wallpaperId)}" aria-label="Download ${escapeHtml(item.title)} wallpaper in full resolution">Download Wallpaper</a>
         </article>
       `;
     }).join("");
+
+    const wallpaperIds = wallpapers.map((item) => item.id);
+
+    grid.querySelectorAll("[data-download-wallpaper]").forEach((link) => {
+      link.addEventListener("click", () => {
+        void recordWallpaperDownload(link.dataset.downloadWallpaper);
+      });
+    });
+
+    void loadDownloadCounts(wallpaperIds);
   } catch (error) {
     grid.innerHTML = "<p>Wallpapers could not be loaded. Please try again later.</p>";
     console.error(error);
@@ -59,8 +143,72 @@ function initGlobalHeader() {
   window.addEventListener("resize", () => {
     if (window.innerWidth > 920) setOpen(false);
   });
+}
 
+async function initSoundtrack(player) {
+  const source = player.dataset.soundtrackSrc;
+  const control = player.querySelector(".incubator-soundtrack__control");
+  const label = player.querySelector("[data-soundtrack-label]");
+  const status = player.querySelector("[data-soundtrack-status]");
+
+  if (!source || !control || !label) return;
+
+  try {
+    const response = await fetch(source, { method: "HEAD", cache: "no-store" });
+    if (!response.ok) return;
+  } catch {
+    return;
+  }
+
+  const audio = new Audio(source);
+  const requestedVolume = Number.parseFloat(player.dataset.soundtrackVolume);
+  audio.volume = Number.isFinite(requestedVolume)
+    ? Math.min(1, Math.max(0, requestedVolume))
+    : 0.25;
+  audio.preload = "metadata";
+  player.hidden = false;
+
+  const setPlayingState = (playing) => {
+    control.setAttribute("aria-pressed", String(playing));
+    label.textContent = playing ? "⏸ PAUSE SOUNDTRACK" : "🎵 ACTIVATE SOUNDTRACK";
+    if (status) status.textContent = playing ? "Soundtrack playing" : "Soundtrack paused";
+  };
+
+  control.addEventListener("click", async () => {
+    if (!audio.paused) {
+      audio.pause();
+      setPlayingState(false);
+      return;
+    }
+
+    control.disabled = true;
+    label.textContent = "⌛ LOADING SOUNDTRACK";
+    if (status) status.textContent = "Soundtrack loading";
+
+    try {
+      await audio.play();
+      setPlayingState(true);
+    } catch {
+      setPlayingState(false);
+      if (status) status.textContent = "Soundtrack could not be played";
+    } finally {
+      control.disabled = false;
+    }
+  });
+
+  audio.addEventListener("ended", () => setPlayingState(false));
+  audio.addEventListener("error", () => {
+    audio.pause();
+    player.hidden = true;
+  });
+}
+
+function initSoundtracks() {
+  document.querySelectorAll("[data-soundtrack]").forEach((player) => {
+    void initSoundtrack(player);
+  });
 }
 
 initGlobalHeader();
-loadWallpapers();
+void loadWallpapers();
+initSoundtracks();
