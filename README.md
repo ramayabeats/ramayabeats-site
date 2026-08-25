@@ -11,6 +11,8 @@ Official static website for Ramaya Beats Studio.
 - `data/*.json` — wallpaper lists loaded by `script.js`, including the four-file Nigiri Ronin release
 - `functions/api/wallpaper-downloads.js` — Cloudflare Pages Function for real per-wallpaper download counts
 - `migrations/0001_create_wallpaper_downloads.sql` — D1 schema for persistent counts
+- `functions/api/page-visits.js` — reusable Cloudflare Pages Function for real per-session page visits
+- `migrations/0002_create_page_visits.sql` — D1 schema for persistent page visit counts
 
 The shared navigation follows **RDS-001 Global Header v1.0**. Its design notes are in `design-system/RDS-001-global-header.md`.
 
@@ -100,3 +102,15 @@ One-time Cloudflare setup:
 4. Redeploy the Pages project so the Function and binding are active.
 
 No database ID or credentials are stored in this repository.
+
+## Page visit counter setup on Cloudflare
+
+The shared page visit endpoint uses the existing `DOWNLOADS_DB` binding. Run `migrations/0002_create_page_visits.sql` once in the same D1 database; no additional binding is required.
+
+Pages opt in with a stable ID on the body element, for example:
+
+```html
+<body data-page-id="brainrot-incubator">
+```
+
+The shared script records at most one visit per page and browser-tab session by using `sessionStorage`. Refreshes read the current D1 value without incrementing it. Add the `data-page-visit-counter` and `data-page-visit-count` hooks only where the total should be shown publicly. If storage or the analytics endpoint is unavailable, the counter remains hidden and the rest of the page continues normally.

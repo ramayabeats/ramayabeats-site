@@ -1,4 +1,6 @@
 const DOWNLOAD_COUNTER_ENDPOINT = "/api/wallpaper-downloads";
+const PAGE_VISIT_ENDPOINT = "/api/page-visits";
+const PAGE_VISIT_SESSION_PREFIX = "ramaya-page-visit:";
 
 function escapeHtml(value) {
   return String(value)
@@ -63,6 +65,60 @@ async function recordWallpaperDownload(wallpaperId) {
     showDownloadCount(wallpaperId, count);
   } catch {
     // Never interrupt the actual file download because analytics are unavailable.
+  }
+}
+
+function claimPageVisitForSession(pageId) {
+  try {
+    const sessionKey = `${PAGE_VISIT_SESSION_PREFIX}${pageId}`;
+    if (window.sessionStorage.getItem(sessionKey)) return false;
+
+    window.sessionStorage.setItem(sessionKey, "1");
+    return true;
+  } catch {
+    // If session storage is unavailable, avoid overcounting page refreshes.
+    return false;
+  }
+}
+
+function showPageVisitCount(count) {
+  if (!Number.isInteger(count) || count < 1) return;
+
+  document.querySelectorAll("[data-page-visit-counter]").forEach((counter) => {
+    const output = counter.querySelector("[data-page-visit-count]");
+    if (!output) return;
+
+    output.textContent = new Intl.NumberFormat("en").format(count);
+    counter.hidden = false;
+  });
+}
+
+async function initPageVisitCounter() {
+  const pageId = document.body?.dataset.pageId;
+  if (!pageId) return;
+
+  const shouldIncrement = claimPageVisitForSession(pageId);
+  const requestUrl = shouldIncrement
+    ? PAGE_VISIT_ENDPOINT
+    : `${PAGE_VISIT_ENDPOINT}?${new URLSearchParams({ pageId })}`;
+
+  try {
+    const response = await fetch(requestUrl, {
+      method: shouldIncrement ? "POST" : "GET",
+      headers: shouldIncrement
+        ? { Accept: "application/json", "Content-Type": "application/json" }
+        : { Accept: "application/json" },
+      body: shouldIncrement ? JSON.stringify({ pageId }) : undefined,
+      credentials: "same-origin",
+      keepalive: shouldIncrement
+    });
+
+    if (!response.ok) return;
+
+    const { count } = await response.json();
+    showPageVisitCount(count);
+  } catch {
+    // Page analytics are optional and must never interrupt the site experience.
   }
 }
 
@@ -212,3 +268,4 @@ function initSoundtracks() {
 initGlobalHeader();
 void loadWallpapers();
 initSoundtracks();
+void initPageVisitCounter();
