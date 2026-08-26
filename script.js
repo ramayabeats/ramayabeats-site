@@ -267,13 +267,25 @@ function initSoundtracks() {
 
 function initIncubatorMotionVisibility() {
   const hero = document.querySelector(".incubator-cinematic-hero");
-  if (!hero || !("IntersectionObserver" in window)) return;
+  if (!hero) return;
 
-  const observer = new IntersectionObserver(([entry]) => {
-    hero.classList.toggle("is-motion-paused", !entry.isIntersecting);
-  }, { rootMargin: "120px 0px" });
+  let heroIsVisible = true;
+  const updateMotionState = () => {
+    const tabIsHidden = document.hidden;
+    document.body.classList.toggle("is-tab-hidden", tabIsHidden);
+    hero.classList.toggle("is-motion-paused", tabIsHidden || !heroIsVisible);
+  };
 
-  observer.observe(hero);
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      heroIsVisible = entry.isIntersecting;
+      updateMotionState();
+    }, { rootMargin: "120px 0px" });
+
+    observer.observe(hero);
+  }
+  document.addEventListener("visibilitychange", updateMotionState);
+  updateMotionState();
 }
 
 initGlobalHeader();

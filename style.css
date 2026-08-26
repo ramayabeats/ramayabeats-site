@@ -1776,6 +1776,12 @@ h1 {
   animation-play-state: paused;
 }
 
+.page-incubator.is-tab-hidden *,
+.page-incubator.is-tab-hidden *::before,
+.page-incubator.is-tab-hidden *::after {
+  animation-play-state: paused !important;
+}
+
 .hero-chamber__bubbles i:nth-child(1) { --bubble-left: 14%; --bubble-size: 4px; --bubble-speed: 4.2s; --bubble-delay: -0.7s; --bubble-drift: 10px; }
 .hero-chamber__bubbles i:nth-child(2) { --bubble-left: 19%; --bubble-size: 7px; --bubble-speed: 5.8s; --bubble-delay: -3.4s; --bubble-drift: -8px; --bubble-alpha: 0.46; }
 .hero-chamber__bubbles i:nth-child(3) { --bubble-left: 25%; --bubble-size: 5px; --bubble-speed: 4.8s; --bubble-delay: -1.8s; --bubble-drift: 7px; }
